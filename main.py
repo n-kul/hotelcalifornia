@@ -17,6 +17,16 @@ AIPIPE_CHAT_URL = "https://aipipe.org/openai/v1/chat/completions"
 DB_PATH = "knowledge_base.db"
 
 app = FastAPI()
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins; can be restricted later
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 class QuestionPayload(BaseModel):
     question: str
