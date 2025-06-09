@@ -11,8 +11,8 @@ import httpx
 AIPROXY_API_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjI0ZjIwMDEwMDhAZHMuc3R1ZHkuaWl0bS5hYy5pbiJ9._MTfkLWLurT3DLStyzoHKg8c2ugWNGUpfCDLmnti6gg"
 AIPROXY_EMBEDDING_URL = "https://aiproxy.sanand.workers.dev/openai/v1/embeddings"
 
-AIPIPE_API_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjI0ZjIwMDEwMDhAZHMuc3R1ZHkuaWl0bS5hYy5pbiJ9.WIFq02daMudpp5TUxX6FFSLY9jfh0gspWZ-__8J6adM"
-AIPIPE_CHAT_URL = "https://aipipe.org/openai/v1/chat/completions"
+AIPIPE_API_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjI0ZjIwMDEwMDhAZHMuc3R1ZHkuaWl0bS5hYy5pbiJ9._MTfkLWLurT3DLStyzoHKg8c2ugWNGUpfCDLmnti6gg"
+AIPIPE_CHAT_URL = "http://aiproxy.sanand.workers.dev/openai/v1/chat/completions"
 
 DB_PATH = "knowledge_base.db"
 
