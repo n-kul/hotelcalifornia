@@ -1,4 +1,5 @@
 import sqlite3
+import os
 import base64
 import json
 import numpy as np
@@ -6,14 +7,12 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional, List
 import httpx
-
+from dotenv import load_dotenv
+load_dotenv()
 # --- Fill your keys here ---
-AIPROXY_API_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjI0ZjIwMDEwMDhAZHMuc3R1ZHkuaWl0bS5hYy5pbiJ9._MTfkLWLurT3DLStyzoHKg8c2ugWNGUpfCDLmnti6gg"
-AIPROXY_EMBEDDING_URL = "https://aiproxy.sanand.workers.dev/openai/v1/embeddings"
-
-AIPIPE_API_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjI0ZjIwMDEwMDhAZHMuc3R1ZHkuaWl0bS5hYy5pbiJ9._MTfkLWLurT3DLStyzoHKg8c2ugWNGUpfCDLmnti6gg"
-AIPIPE_CHAT_URL = "http://aiproxy.sanand.workers.dev/openai/v1/chat/completions"
-
+OPENAI_API_KEY=os.environ.get("OPENAI_API_KEY")
+AIPROXY_EMBEDDING_URL=os.environ.get("AIPROXY_EMBEDDING_URL","https://aiproxy.sanand.workers.dev/openai/v1/embeddings")
+AIPIPE_CHAT_URL=os.environ.get("AIPIPE_CHAT_URL","http://aiproxy.sanand.workers.dev/openai/v1/chat/completions")
 DB_PATH = "knowledge_base.db"
 
 app = FastAPI()
@@ -81,7 +80,7 @@ def get_top_k_chunks(question_embedding: np.ndarray, k=3):
 # Get embedding for question using AIProxy
 async def get_question_embedding(question: str) -> np.ndarray:
     headers = {
-        "Authorization": f"Bearer {AIPROXY_API_KEY}",
+        "Authorization": f"Bearer {OPENAI_API_KEY}",
         "Content-Type": "application/json",
     }
     payload = {
@@ -97,7 +96,7 @@ async def get_question_embedding(question: str) -> np.ndarray:
 # Query AIPipe chat completion API
 async def query_aipipe_chat(prompt: str) -> str:
     headers = {
-        "Authorization": f"Bearer {AIPIPE_API_KEY}",
+        "Authorization": f"Bearer {OPENAI_API_KEY}",
         "Content-Type": "application/json",
     }
     payload = {
