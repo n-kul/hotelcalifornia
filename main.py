@@ -10,7 +10,7 @@ import httpx
 from dotenv import load_dotenv
 load_dotenv()
 # --- Fill your keys here ---
-OPENAI_API_KEY=os.environ.get("OPENAI_API_KEY")
+OPENAI_API_KEY=os.environ.get("AIPROXY_KEY")
 AIPROXY_EMBEDDING_URL=os.environ.get("AIPROXY_EMBEDDING_URL","https://aiproxy.sanand.workers.dev/openai/v1/embeddings")
 AIPIPE_CHAT_URL=os.environ.get("AIPIPE_CHAT_URL","http://aiproxy.sanand.workers.dev/openai/v1/chat/completions")
 DB_PATH = "knowledge_base.db"
